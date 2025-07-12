@@ -22,7 +22,8 @@ Joints and Motion:
 Prismatic joint 1: allows the bridge to move up/down (Y-axis).
 Prismatic joint 2: allows the actuator to move left/right (X-axis) along the bridge.
 The actuator position is driven by motor rotation and belt tension 
-
+WORKING OF DIAGRAM GIVEN IN THE ASSIGNMENT 
+The carriage is connected on either side by a serpentine belt. This belt is fed through a total of 6 pulleys and 2 motors. The carriage will slide (left and right) along a gantry that is free to move up and down, which allows for complete planar freedom. Figure 3a illustrates how a move in the +X direction can be accomplished by turning both motors in the clockwise direction, by the same amount, and at the same speed. Figure 3b illustrates how a move in the +Y direction can be accomplished by turning both A and B motors by equal amounts in opposite directions and at the same speed. 
 
 
 .
@@ -522,7 +523,32 @@ cd ~/catkin_ws
 catkin_make
 source devel/setup.bash
 roslaunch my_robot_description view_robot.launch
+
+
 set the frame to base_link 
 add robel model and tf from option given at the left bottom 
 
-then, a rviz simulation is visible 
+CTRL C TO STOP IT 
+
+CONFIGURING MOVEIT PACKAGE 
+
+
+then, a rviz simulation is visible <img width="454" height="449" alt="Screenshot from 2025-07-12 09-00-38" src="https://github.com/user-attachments/assets/9da7501a-c112-413b-9cd4-993903c1516d" />
+
+
+<img width="623" height="334" alt="Screenshot from 2025-07-12 08-59-48" src="https://github.com/user-att<img width="311" height="390" alt="Screenshot from 2025-07-12 09-11-44" src="https://github.com/user-attachments/assets/303fd6c8-e046-4568-a171-17e4c1865ec7" />
+achments/assets/6f98f76d-f116-40e5-a187-43793bf8b602" />
+
+moveit 
+
+sudo apt install ros-noetic-moveit
+sudo apt install ros-noetic-moveit-setup-assistant
+roslaunch moveit_setup_assistant setup_assistant.launch
+
+A new window will open up, moveit assistant , where we can upload our urdf file to configure a new moveit package 
+Add microocntrollers, planners, virtual joints of base link with real world 
+add both prismatic joint and create a package 
+run roslaunch hbot_moveit_config demo.launch
+where hbot_movit_config is the directory/package where this moveit package was created in src directory of catkin_ws 
+
+
