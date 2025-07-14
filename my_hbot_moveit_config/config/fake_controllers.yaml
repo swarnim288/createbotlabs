@@ -1,0 +1,11 @@
+controller_list:
+  - name: fake_gantry_xy_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - bridge_joint
+      - carriage_joint
+initial:  # Define initial robot poses per group
+#  - group: gantry_xy
+#    pose: home
+
+  []

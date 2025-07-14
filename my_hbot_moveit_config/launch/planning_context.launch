@@ -1,0 +1,36 @@
+<launch>
+  <!-- Declare that this file accepts load_robot_description -->
+  <arg name="load_robot_description" default="true"/>
+
+  <!-- 1. Conditionally load URDF -->
+  <param if="$(arg load_robot_description)"
+         name="robot_description"
+         textfile="$(find my_robot_description)/urdf/my_robot.urdf"/>
+
+  <!-- 2. Load SRDF (Semantic) -->
+  <param name="robot_description_semantic"
+         textfile="$(find my_hbot_moveit_config)/config/robot_description.srdf"/>
+
+  <!-- 3. Load joint & cartesian limits -->
+  <group ns="robot_description_planning">
+    <rosparam command="load"
+              file="$(find my_hbot_moveit_config)/config/joint_limits.yaml"/>
+    <rosparam command="load"
+              file="$(find my_hbot_moveit_config)/config/cartesian_limits.yaml"/>
+  </group>
+
+  <!-- 4. Load kinematics settings -->
+  <group ns="robot_description_kinematics">
+    <rosparam command="load"
+              file="$(find my_hbot_moveit_config)/config/kinematics.yaml"/>
+  </group>
+
+  <!-- 5. Use SimpleControllerManager for MoveIt -->
+  <param name="moveit_controller_manager"
+         value="moveit_simple_controller_manager/MoveItSimpleControllerManager"/>
+
+  <!-- 6. Load your controllers into move_group’s namespace -->
+  <rosparam ns="~" command="load"
+            file="$(find my_hbot_moveit_config)/config/simple_moveit_controllers.yaml"/>
+</launch>
+

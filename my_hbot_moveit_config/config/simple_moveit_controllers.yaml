@@ -1,0 +1,19 @@
+gantry_controller:
+  type: FollowJointTrajectory
+  joints:
+    - bridge_joint
+    - carriage_joint
+  gains:
+    bridge_joint:
+      p: 100.0
+      i: 0.0
+      d: 10.0
+    carriage_joint:
+      p: 100.0
+      i: 0.0
+      d: 10.0
+
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50
+

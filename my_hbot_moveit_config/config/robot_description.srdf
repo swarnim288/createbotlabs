@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot name="hbot_gantry">
+  <!-- Define your X–Y gantry as one planning group -->
+  <group name="gantry_xy">
+    <joint name="bridge_joint"/>
+    <joint name="carriage_joint"/>
+  </group>
+
+  <!-- Optional: Define your end effector link -->
+  <end_effector name="gantry_tool"
+                parent_link="ee_link"
+                group="gantry_xy"/>
+</robot>
